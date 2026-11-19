@@ -15,6 +15,12 @@ npm run build     # produkcijski build u /dist
 Povežite repozitorij s Netlifyjem ili povucite mapu `dist` na app.netlify.com/drop.
 Postavke su već u `netlify.toml` (build: `npm run build`, publish: `dist`).
 
+## Objava na Cloudflare (Workers & Pages)
+
+`wrangler.jsonc` je uključen. Cloudflare → Workers & Pages → Create → **Import a repository** → odaberite ovaj GitHub repozitorij.
+Zadane postavke rade: Cloudflare pokreće `npx wrangler deploy` (koji prvo radi `npm run build`) i objavljuje `dist/`.
+Svaki push na `main` automatski ponovno objavljuje stranicu na `gradjevinar.<subdomena>.workers.dev`.
+
 ## Struktura
 
 - `src/data/content.ts`: SAV tekst, kontakti, djelatnosti, vremenska crta, projekti i koraci procesa. Sadržaj se mijenja ovdje.
