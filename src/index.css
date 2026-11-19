@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
+  body { overflow-x: clip; }
+  body { @apply bg-paper text-char font-sans antialiased; font-feature-settings: 'ss01'; }
+  ::selection { background: #C46A39; color: #F4F1E9; }
+  :focus-visible { outline: 2px solid #C46A39; outline-offset: 3px; }
+  section[id] { scroll-margin-top: 72px; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12; }
+  .label { @apply font-sans text-[11px] font-bold uppercase tracking-label; }
+  .display { @apply font-display font-extrabold uppercase leading-[0.86] tracking-[-0.01em]; }
+  .body-lg { @apply text-[17px] leading-[1.65] sm:text-lg; }
+  /* Vrlo blaga zrnatost papira; nikad ispod teksta jače od ~3 % */
+  .paper-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.14 0 0 0 0 0.15 0 0 0 0 0.14 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .btn { @apply inline-flex items-center gap-3 px-6 py-4 label transition-colors duration-300; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
