@@ -23,7 +23,8 @@ export default function Photo({
   tagTone = 'light',
 }: Props) {
   return (
-    <div className={`relative overflow-hidden bg-concrete ${className}`}>
+    // Pozicioniranje: 'relative' samo ako pozivatelj već ne traži 'absolute' (inače bi se klase poništavale)
+    <div className={`${/\babsolute\b/.test(className) ? '' : 'relative'} overflow-hidden bg-concrete ${className}`}>
       <img
         src={img(name, 2000)}
         srcSet={`${img(name, 1000)} 1000w, ${img(name, 2000)} 2000w`}

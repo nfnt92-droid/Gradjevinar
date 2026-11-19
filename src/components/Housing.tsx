@@ -4,7 +4,7 @@ import SectionHead from './SectionHead'
 export default function Housing({ onInquiry }: { onInquiry: () => void }) {
   return (
     <section id="stanogradnja" className="bg-paper2">
-      <div className="wrap pt-20 sm:pt-28">
+      <div className="wrap pt-16 sm:pt-28">
         <SectionHead index="06" name="Stanogradnja" />
       </div>
       <div className="mt-14 grid lg:mt-20 lg:grid-cols-12">
@@ -17,7 +17,7 @@ export default function Housing({ onInquiry }: { onInquiry: () => void }) {
         />
         <div className="flex flex-col justify-between px-5 py-14 sm:px-8 lg:col-span-5 lg:px-14 lg:py-16 xl:pr-[max(3rem,calc((100vw-1360px)/2+3rem))]">
           <div>
-            <h2 className="display text-[clamp(48px,5.6vw,88px)] text-char">Stanovi koje gradimo sami.</h2>
+            <h2 className="display text-[clamp(42px,5.6vw,88px)] text-char">Stanovi koje gradimo sami.</h2>
             <p className="body-lg mt-8 max-w-[42ch] text-char/75">
               Kao investitor i izvođač, stanove gradimo vlastitim ljudima i materijalom te ih prodajemo izravno, bez
               posrednika. Kupac zna tko gradi, čime gradi i tko stoji iza svakog kvadrata.

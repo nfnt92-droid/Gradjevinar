@@ -99,7 +99,15 @@ export default function Header() {
                   >
                     <a
                       href={n.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => {
+                        // Zatvori izbornik pa tek onda pomakni stranicu (dok je izbornik otvoren, pomicanje je zaključano)
+                        e.preventDefault()
+                        setOpen(false)
+                        window.setTimeout(() => {
+                          document.querySelector(n.href)?.scrollIntoView({ behavior: 'smooth' })
+                          history.replaceState(null, '', n.href)
+                        }, 60)
+                      }}
                       className="flex items-baseline justify-between py-4"
                     >
                       <span className="display text-[44px] leading-none">{n.label}</span>

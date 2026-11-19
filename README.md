@@ -27,7 +27,7 @@ Podaci preuzeti sa stare stranice gradjevinarnt.com, označeni s `VERIFY` u `con
 
 - [ ] Godina osnivanja 1970. (hero, O nama, logo "od 1970.", schema.org)
 - [ ] "Više od 100 djelatnika" (vremenska crta, Ljudi i oprema)
-- [ ] Vremenska crta: 2020 (Kamenolom Bučići) i 2022 (ISO SPAN blokovi) su datumi OBJAVA na staroj stranici, ne nužno godine početka
+- [ ] Vremenska crta: Kamenolom Bučići i ISO SPAN prikazani su BEZ godine, s oznakom "u provjeri" (2020. i 2022. su samo datumi objava na staroj stranici). Kad uprava potvrdi godine, upisati ih u `timeline` u `content.ts` (polje `year`) i ukloniti `note`
 - [ ] Adresa: Kralja Tvrtka 42, 72290 Novi Travnik
 - [ ] Telefoni: Uredi +387 30 795 132, Betonara +387 30 795 138, Pješčara +387 30 790 027, Fax +387 30 795 135
 - [ ] E-mail adresa (nije pronađena na staroj stranici, nije dodana)

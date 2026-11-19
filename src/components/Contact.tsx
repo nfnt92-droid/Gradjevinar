@@ -5,8 +5,8 @@ import { company, divisionOptions } from '../data/content'
 type Props = { division: string; setDivision: (d: string) => void }
 
 const field =
-  'mt-1 w-full border-0 border-b border-paper/25 bg-transparent px-0 py-4 text-[17px] text-paper placeholder:text-paper/30 transition-colors hover:border-paper/45 focus:border-rust focus:outline-none focus:ring-0'
-const fieldLabel = 'text-[11px] font-bold uppercase tracking-[0.14em] text-paper/65'
+  'mt-1 w-full rounded-none border-0 border-b border-paper/30 bg-transparent px-0 py-4 text-[17px] leading-snug text-paper placeholder:text-paper/40 transition-colors hover:border-paper/50 focus:border-rust focus:outline-none focus:ring-0 [&:user-invalid]:border-rust'
+const fieldLabel = 'block text-[11px] font-bold uppercase tracking-[0.14em] text-paper/70'
 
 function GroupHead({ no, title }: { no: string; title: string }) {
   return (
@@ -83,7 +83,7 @@ export default function Contact({ division, setDivision }: Props) {
           <form
             noValidate
             onSubmit={onSubmit}
-            className="border border-paper/15 bg-char/40 p-6 sm:p-10 lg:col-span-7 lg:col-start-6"
+            className="-mx-5 border-y border-paper/15 bg-char/40 px-5 py-8 sm:mx-0 sm:border sm:p-10 lg:col-span-7 lg:col-start-6"
             aria-describedby="form-status"
           >
             <fieldset>

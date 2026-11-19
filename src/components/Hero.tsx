@@ -34,15 +34,15 @@ export default function Hero() {
           srcSet={`${img('hero-kamenolom', 1000)} 1000w, ${img('hero-kamenolom', 2000)} 2000w`}
           sizes="100vw"
           alt="Kamenolom s drobilicom u šumovitom krajoliku"
-          className="h-[118%] w-full object-cover object-[50%_60%] [filter:contrast(1.12)_brightness(0.9)_saturate(0.92)]"
+          className="h-[118%] w-full object-cover object-[50%_60%] [filter:contrast(1.22)_brightness(0.86)_saturate(0.95)]"
           initial={{ scale: 1.14, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.2, ease }}
         />
       </motion.div>
       {/* Zatamnjenje samo radi čitljivosti naslova */}
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(22,24,23,0.6)_0%,rgba(22,24,23,0.05)_28%,rgba(22,24,23,0.2)_52%,rgba(22,24,23,0.92)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,24,23,0.55)_0%,rgba(22,24,23,0.15)_45%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(22,24,23,0.62)_0%,rgba(22,24,23,0.08)_26%,rgba(22,24,23,0.32)_50%,rgba(22,24,23,0.94)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(22,24,23,0.6)_0%,rgba(22,24,23,0.2)_48%,transparent_75%)]" />
 
       {/* Okomita industrijska oznaka */}
       <motion.div
@@ -78,10 +78,10 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.15, duration: 0.9, ease }}
           >
-            <a href="#projekti" className="btn bg-rustdark text-paper shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] hover:bg-paper hover:text-ink">
+            <a href="#projekti" className="btn min-w-[190px] justify-center bg-rustdark py-[18px] text-paper shadow-[0_12px_32px_-14px_rgba(0,0,0,0.7)] hover:bg-paper hover:text-ink">
               Naši projekti
             </a>
-            <a href="#djelatnosti" className="btn border border-paper/70 bg-ink/30 text-paper backdrop-blur-sm hover:border-paper hover:bg-paper hover:text-ink">
+            <a href="#djelatnosti" className="btn min-w-[190px] justify-center border border-paper/70 bg-ink/40 py-[17px] text-paper backdrop-blur-sm hover:border-paper hover:bg-paper hover:text-ink">
               Naše djelatnosti
             </a>
           </motion.div>

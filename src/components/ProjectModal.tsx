@@ -31,6 +31,7 @@ export default function ProjectModal({ projects, index, onClose, onNavigate, onI
   const panelRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const lastFocus = useRef<HTMLElement | null>(null)
+  const touchX = useRef<number | null>(null)
 
   // Nova fotografija pri promjeni projekta
   useEffect(() => setPhoto(0), [index])
@@ -103,7 +104,12 @@ export default function ProjectModal({ projects, index, onClose, onNavigate, onI
           >
             {/* Zaglavlje prozora */}
             <div className="flex h-16 shrink-0 items-center justify-between border-b border-char/15 px-5 sm:px-8">
-              <TechLabel code={`Projekt / ${project.code}`} caption={project.category} />
+              <div className="flex items-center gap-5">
+                <TechLabel code={`Projekt / ${project.code}`} caption={project.category} />
+                <span className="hidden text-[11px] font-semibold tabular-nums text-char/45 sm:inline">
+                  {index + 1} od {projects.length}
+                </span>
+              </div>
               <button
                 ref={closeRef}
                 type="button"
@@ -121,7 +127,16 @@ export default function ProjectModal({ projects, index, onClose, onNavigate, onI
             <div className="min-h-0 flex-1 overflow-y-auto lg:grid lg:grid-cols-12 lg:overflow-hidden">
               {/* Galerija */}
               <div className="flex flex-col bg-char lg:col-span-7 lg:min-h-0">
-                <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:flex-1">
+                <div
+                  className="relative aspect-[4/3] w-full touch-pan-y overflow-hidden lg:aspect-auto lg:flex-1"
+                  onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
+                  onTouchEnd={(e) => {
+                    if (touchX.current === null) return
+                    const dx = e.changedTouches[0].clientX - touchX.current
+                    if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1)
+                    touchX.current = null
+                  }}
+                >
                   <AnimatePresence initial={false}>
                     <motion.img
                       key={`${project.code}-${photo}`}
@@ -230,7 +245,7 @@ export default function ProjectModal({ projects, index, onClose, onNavigate, onI
                         className="grid h-11 min-w-11 place-items-center border border-char/25 px-4 text-[12px] font-bold uppercase tracking-[0.12em] text-char hover:border-char"
                         aria-label={`Prethodni projekt, ${projects[prev].code}`}
                       >
-                        <span className="hidden sm:inline">Prethodni</span>
+                        <span className="hidden sm:inline">Prethodni <span className="ml-1 text-char/45">{projects[prev].code}</span></span>
                         <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" className="sm:hidden rotate-180">
                           <path d="M5 2l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" />
                         </svg>
@@ -241,7 +256,7 @@ export default function ProjectModal({ projects, index, onClose, onNavigate, onI
                         className="-ml-px grid h-11 min-w-11 place-items-center border border-char/25 px-4 text-[12px] font-bold uppercase tracking-[0.12em] text-char hover:border-char"
                         aria-label={`Sljedeći projekt, ${projects[next].code}`}
                       >
-                        <span className="hidden sm:inline">Sljedeći</span>
+                        <span className="hidden sm:inline">Sljedeći <span className="ml-1 text-char/45">{projects[next].code}</span></span>
                         <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true" className="sm:hidden ">
                           <path d="M5 2l6 6-6 6" fill="none" stroke="currentColor" strokeWidth="2" />
                         </svg>

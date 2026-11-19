@@ -13,7 +13,7 @@ function Step({ index, onActive, children }: { index: number; onActive: (i: numb
     if (inView) onActive(index)
   }, [inView, index, onActive])
   return (
-    <li ref={ref} className="flex min-h-0 flex-col justify-center py-10 lg:min-h-[62vh] lg:py-0">
+    <li ref={ref} className="flex min-h-0 flex-col justify-center py-10 lg:min-h-[52vh] lg:py-0 lg:first:min-h-[42vh] lg:last:min-h-[60vh]">
       {children}
     </li>
   )
@@ -31,7 +31,7 @@ export default function MaterialStory() {
       <div className="wrap">
         <SectionHead index="04" name="Od materijala do zgrade" dark />
         <div className="mt-14 grid gap-8 lg:mt-20 lg:grid-cols-12 lg:items-end">
-          <h2 className="display text-[clamp(44px,7.6vw,118px)] lg:col-span-8">Od kamena do ključa.</h2>
+          <h2 className="display text-[clamp(42px,7.6vw,118px)] lg:col-span-8">Od kamena do ključa.</h2>
           <p className="body-lg text-paper/70 lg:col-span-4">
             Najvažnije materijale proizvodimo sami, pa kontroliramo cijeli put od kamena do gotovog objekta. Pet
             koraka, jedna odgovornost.
@@ -99,7 +99,7 @@ export default function MaterialStory() {
                   </span>
                   <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-paper/45">Korak {i + 1} od 5</span>
                 </span>
-                <h3 className={`display mt-2 text-[clamp(44px,5.2vw,84px)] transition-colors duration-500 ${i === active ? 'text-paper' : 'lg:text-paper/30'}`}>
+                <h3 className={`display mt-2 text-[clamp(40px,5.2vw,84px)] transition-colors duration-500 ${i === active ? 'text-paper' : 'lg:text-paper/30'}`}>
                   {p.title}
                 </h3>
                 <p className={`mt-5 max-w-[40ch] text-[17px] leading-relaxed transition-colors duration-500 ${i === active ? 'text-paper/80' : 'text-paper/80 lg:text-paper/35'}`}>

@@ -39,29 +39,29 @@ export default function People() {
             </ul>
           </div>
 
-          <div className="grid grid-cols-6 gap-4 lg:col-span-7 lg:gap-5">
+          <div className="mt-6 grid grid-cols-6 gap-3 sm:gap-4 lg:col-span-7 lg:mt-0 lg:gap-5">
             <Photo
               name="beton-ugradnja"
               alt="Ugradnja betona u temelj"
-              className="col-span-6 aspect-[4/5] sm:col-span-3 sm:row-span-2 sm:aspect-auto"
+              className="col-span-6 aspect-[4/3] sm:col-span-3 sm:row-span-2 sm:aspect-auto"
               sizes="(min-width:1024px) 30vw, 50vw"
             />
             <Photo
               name="mehanizacija-bager"
               alt="Bager na gradilištu"
-              className="col-span-6 aspect-[4/3] sm:col-span-3"
+              className="col-span-3 aspect-square sm:aspect-[4/3]"
               sizes="(min-width:1024px) 30vw, 50vw"
             />
             <Photo
               name="mehanizacija-utovarivac"
               alt="Utovarivač kod deponije agregata"
-              className="col-span-6 aspect-[4/3] sm:col-span-3"
+              className="col-span-3 aspect-square sm:aspect-[4/3]"
               sizes="(min-width:1024px) 30vw, 50vw"
             />
             <Photo
               name="agregat-deponija"
               alt="Deponija agregata s bagerom"
-              className="col-span-6 aspect-[21/9]"
+              className="col-span-6 aspect-[16/9] sm:aspect-[21/9]"
               sizes="(min-width:1024px) 58vw, 100vw"
             />
           </div>

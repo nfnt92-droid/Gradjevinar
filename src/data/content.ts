@@ -98,12 +98,36 @@ export const divisionOptions = [
   'Ostalo',
 ]
 
-// VERIFY: 2020 i 2022 su datumi objava na staroj stranici, ne nužno godine početka.
-export const timeline = [
-  { year: 1970, title: 'Osnivanje', text: 'Građevinsko poduzeće Građevinar osnovano je u Novom Travniku.' },
-  { year: 2020, title: 'Kamenolom Bučići', text: 'Eksploatacija dolomita za vlastitu betonaru i tržište.' },
-  { year: 2022, title: 'Nove tehnologije', text: 'Uvođenje ISO SPAN blokova s ugrađenom toplinskom izolacijom.' },
-  { year: 2026, title: 'Danas', text: 'Više od 100 djelatnika i zaokružen lanac, od kamena do zgrade.' },
+// Vremenska crta: samo 1970. i "danas" vezani su uz godinu na mjernoj traci.
+// Kamenolom i ISO SPAN su na staroj stranici objavljeni 2020. i 2022., ali to su
+// datumi objava, ne potvrđene godine početka, pa se prikazuju bez godine.
+export type Milestone = {
+  /** Veliki natpis stupca (godina ili tema) */
+  label: string
+  /** Godina na mjernoj traci; null = nepotvrđeno, bez veze s trakom */
+  year: number | null
+  title: string
+  text: string
+  note?: string
+}
+
+export const timeline: Milestone[] = [
+  { label: '1970', year: 1970, title: 'Osnivanje', text: 'Građevinsko poduzeće Građevinar osnovano je u Novom Travniku.' }, // VERIFY
+  {
+    label: 'Kamenolom',
+    year: null,
+    title: 'Bučići, dolomit',
+    text: 'Vlastiti kamenolom opskrbljuje našu betonaru i tržište građevinskim kamenom.',
+    note: 'Godina početka u provjeri',
+  },
+  {
+    label: 'ISO SPAN',
+    year: null,
+    title: 'Nove tehnologije',
+    text: 'Primjena blokova s ugrađenom toplinskom izolacijom.',
+    note: 'Godina uvođenja u provjeri',
+  },
+  { label: 'Danas', year: 2026, title: 'Od kamena do zgrade', text: 'Više od 100 djelatnika i zaokružen lanac proizvodnje i gradnje.' }, // VERIFY
 ]
 
 export type Project = {

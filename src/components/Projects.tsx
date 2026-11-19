@@ -23,6 +23,13 @@ const media = [
   'aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-[360px]',
 ]
 
+// Kadriranje pojedinih fotografija radi ujednačenog izgleda mreže
+const focus: Record<string, string> = {
+  'projekt-cesta': 'object-[50%_72%]',
+  'projekt-skela': 'object-[50%_40%]',
+  'projekt-okvir': 'object-[50%_45%]',
+}
+
 export default function Projects() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
@@ -46,7 +53,7 @@ export default function Projects() {
             <FoundationDetail className="h-auto w-full" />
           </DrawingLayer>
 
-          <h2 className="display relative text-[clamp(44px,7.6vw,118px)] text-char lg:col-span-6">
+          <h2 className="display relative text-[clamp(42px,7.6vw,118px)] text-char lg:col-span-6">
             Odabrani
             <br />
             projekti.
@@ -90,7 +97,7 @@ export default function Projects() {
                     name={p.image}
                     alt={p.alt}
                     className="absolute inset-0"
-                    imgClassName="grayscale-[0.55] transition-[transform,filter] duration-[1100ms] ease-out group-hover:scale-[1.035] group-hover:grayscale-0"
+                    imgClassName={`${focus[p.image] ?? ''} [filter:grayscale(0.5)_contrast(1.06)_brightness(0.97)] transition-[transform,filter] duration-[900ms] ease-out group-hover:scale-[1.03] group-hover:[filter:grayscale(0)_contrast(1.06)_brightness(1)]`}
                     sizes={i === 0 ? '(min-width:1024px) 62vw, 100vw' : '(min-width:1024px) 31vw, 50vw'}
                   />
                 </div>

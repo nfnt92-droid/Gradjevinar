@@ -18,7 +18,7 @@ export default function Divisions() {
         <SectionHead index="02" name="Djelatnosti" />
 
         <div className="mt-14 grid gap-8 lg:mt-20 lg:grid-cols-12 lg:items-end">
-          <h2 className="display text-[clamp(40px,6.4vw,100px)] text-char lg:col-span-7">
+          <h2 className="display text-[clamp(42px,6.4vw,100px)] text-char lg:col-span-7">
             Četiri djelatnosti. Jedan lanac.
           </h2>
           <p className="body-lg text-char/75 lg:col-span-4 lg:col-start-9">
@@ -42,7 +42,7 @@ export default function Divisions() {
                     aria-selected={on}
                     aria-controls="division-panel"
                     onClick={() => setActive(i)}
-                    onMouseEnter={() => window.matchMedia('(hover: hover)').matches && setActive(i)}
+                    onMouseEnter={() => window.matchMedia('(hover: hover) and (min-width: 1024px)').matches && setActive(i)}
                     onFocus={() => setActive(i)}
                     className="group flex w-full items-start gap-5 py-6 text-left sm:gap-7"
                   >

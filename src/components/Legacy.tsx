@@ -20,7 +20,7 @@ export default function Legacy() {
         <SectionHead index="01" name="O nama" />
 
         <div className="mt-14 grid gap-10 lg:mt-20 lg:grid-cols-12">
-          <h2 className="display text-[clamp(44px,7.6vw,118px)] text-char lg:col-span-7">
+          <h2 className="display text-[clamp(42px,7.6vw,118px)] text-char lg:col-span-7">
             Iskustvo koje se gradi desetljećima.
           </h2>
           <div className="space-y-5 text-char/80 lg:col-span-4 lg:col-start-9 lg:pt-3">
@@ -37,21 +37,28 @@ export default function Legacy() {
         </div>
       </div>
 
-      {/* Mjerna traka: 1970 → danas (desktop) */}
+      {/* Mjerna traka: 1970 → danas (desktop). Na traku su vezane samo potvrđene godine. */}
       <div className="wrap mt-20 hidden md:block lg:mt-28">
         <div className="grid grid-cols-4">
           {timeline.map((t, i) => (
             <motion.div
-              key={t.year}
-              className="pr-8"
+              key={t.label}
+              className="flex flex-col pr-8"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ delay: 0.4 + i * 0.12, duration: 0.7, ease }}
             >
-              <span className="display block text-[clamp(44px,5vw,72px)] text-char">{t.year === END ? 'Danas' : t.year}</span>
+              <span className={`display block text-[clamp(38px,4.1vw,60px)] ${t.year === null ? 'text-char/80' : 'text-char'}`}>
+                {t.label}
+              </span>
               <span className="mt-3 block text-[14px] font-bold text-char">{t.title}</span>
               <span className="mt-1 block max-w-[30ch] text-[14px] leading-snug text-char/65">{t.text}</span>
+              {t.note && (
+                <span className="mt-3 inline-flex w-fit items-center gap-2 border border-dashed border-char/35 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-char/55">
+                  {t.note}
+                </span>
+              )}
             </motion.div>
           ))}
         </div>
@@ -59,11 +66,10 @@ export default function Legacy() {
         <svg className="mt-6 block h-16 w-full overflow-visible" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
           {timeline.map((t, i) => {
             const x0 = i * 25
-            const x1 = pos(t.year)
-            return (
+            return t.year !== null ? (
               <motion.polyline
-                key={t.year}
-                points={`${x0},0 ${x0},14 ${x1},40`}
+                key={t.label}
+                points={`${x0},0 ${x0},14 ${pos(t.year)},40`}
                 fill="none"
                 stroke="#C46A39"
                 strokeWidth="1"
@@ -72,6 +78,20 @@ export default function Legacy() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ delay: 0.9 + i * 0.12, duration: 0.6 }}
+              />
+            ) : (
+              // Nepotvrđena godina: kratka isprekidana linija bez veze s trakom
+              <line
+                key={t.label}
+                x1={x0}
+                y1={0}
+                x2={x0}
+                y2={14}
+                stroke="#242724"
+                strokeOpacity="0.35"
+                strokeWidth="1"
+                strokeDasharray="3 3"
+                vectorEffect="non-scaling-stroke"
               />
             )
           })}
@@ -99,13 +119,21 @@ export default function Legacy() {
       </div>
 
       {/* Mobilna verzija: okomita traka */}
-      <ol className="wrap mt-16 md:hidden">
+      <ol className="wrap mt-14 md:hidden">
         {timeline.map((t) => (
-          <li key={t.year} className="relative border-l border-char pb-10 pl-6 last:pb-0">
-            <span className="absolute -left-[2px] top-3 h-5 w-[3px] bg-rust" />
-            <span className="display block text-[52px] text-char">{t.year === END ? 'Danas' : t.year}</span>
+          <li
+            key={t.label}
+            className={`relative border-l pb-9 pl-6 last:pb-0 ${t.year === null ? 'border-dashed border-char/40' : 'border-char'}`}
+          >
+            <span className={`absolute -left-[2px] top-2.5 h-5 w-[3px] ${t.year === null ? 'bg-char/30' : 'bg-rust'}`} />
+            <span className={`display block text-[44px] ${t.year === null ? 'text-char/80' : 'text-char'}`}>{t.label}</span>
             <span className="mt-2 block text-[15px] font-bold text-char">{t.title}</span>
             <span className="mt-1 block text-[15px] leading-snug text-char/65">{t.text}</span>
+            {t.note && (
+              <span className="mt-3 inline-block border border-dashed border-char/35 px-2 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-char/55">
+                {t.note}
+              </span>
+            )}
           </li>
         ))}
       </ol>
